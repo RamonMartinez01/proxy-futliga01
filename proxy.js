@@ -15,7 +15,7 @@ app.use((req, res, next) => {
 app.get('/api/data', async (req, res) => {
     try {
       // Realizar una solicitud a la API externa
-      const response = await axios.get('https://fastapifutsalnies-production.up.railway.app/v1/fixtures/');
+      const response = await axios.get('http://64.23.243.233:6969/v1/fixtures/');
       
       // Devolver los datos obtenidos de la API externa como respuesta a la solicitud del cliente
       res.json(response.data);
