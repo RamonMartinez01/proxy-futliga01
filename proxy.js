@@ -25,6 +25,21 @@ app.get('/api/data', async (req, res) => {
       res.status(500).json({ error: 'Error al obtener datos de la API externa' });
     }
   });
+
+  // Routa para manejar la petición de la solicitud de aplicación cliente para match notes
+app.get('/api/match_note', async (req, res) => {
+    try {
+        // Make a request to the external API
+        const response = await axios.get('http://64.23.243.233:6969/v1/match_note/');
+        
+        // Return the data obtained from the external API as a response to the client request
+        res.json(response.data);
+    } catch (error) {
+        // Handle any errors that occur during the request to the external API
+        console.error('Error getting data from external API:', error.message);
+        res.status(500).json({ error: 'Error getting data from external API' });
+    }
+});
   
   // Iniciar el servidor Express
   app.listen(SERVER_PORT, () => {
