@@ -11,7 +11,7 @@ app.use((req, res, next) => {
     next();
   });
 
-// Ruta para manejar las solicitudes de la aplicación cliente
+// Ruta para manejar las solicitudes de la aplicación cliente para API futsal nies sullivan
 app.get('/api/data', async (req, res) => {
     try {
       // Realizar una solicitud a la API externa
@@ -29,16 +29,31 @@ app.get('/api/data', async (req, res) => {
   // Routa para manejar la petición de la solicitud de aplicación cliente para match notes
 app.get('/api/match_note', async (req, res) => {
     try {
-        // Make a request to the external API
+        // Realizar una petición a la API de match_note para resumen del partido
         const response = await axios.get('http://64.23.243.233:6969/v1/match_note/');
         
-        // Return the data obtained from the external API as a response to the client request
+        // Devolver los datos obtenidos de la API externa como respuesta a la solicitud del cliente
         res.json(response.data);
     } catch (error) {
-        // Handle any errors that occur during the request to the external API
+        // Manejar cualquier error que ocurra durante la solicitud a la API externa
         console.error('Error getting data from external API:', error.message);
         res.status(500).json({ error: 'Error getting data from external API' });
     }
+});
+
+ // Routa para manejar la petición de la solicitud de aplicación cliente para Tabla Copmleta de resultados
+ app.get('/api/match_note', async (req, res) => {
+  try {
+      // Realizar una petición a la API de match_note para Tabla Completa
+      const response = await axios.get('http://64.23.243.233:6969/v1/general_table/');
+      
+      // Devolver los datos obtenidos de la API externa como respuesta a la solicitud del cliente
+      res.json(response.data);
+  } catch (error) {
+      // Manejar cualquier error que ocurra durante la solicitud a la API externa
+      console.error('Error getting data from external API:', error.message);
+      res.status(500).json({ error: 'Error getting data from external API' });
+  }
 });
   
   // Iniciar el servidor Express
