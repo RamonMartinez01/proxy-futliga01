@@ -42,7 +42,7 @@ app.get('/api/match_note', async (req, res) => {
 });
 
  // Routa para manejar la petición de la solicitud de aplicación cliente para Tabla Copmleta de resultados
- app.get('/api/match_note', async (req, res) => {
+ app.get('/api/general_table', async (req, res) => {
   try {
       // Realizar una petición a la API de match_note para Tabla Completa
       const response = await axios.get('http://64.23.243.233:6969/v1/general_table/');
